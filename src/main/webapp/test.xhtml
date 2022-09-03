@@ -8,33 +8,7 @@
 </h:head>
 <h:body>
     <h:form id="frmTest">
-        <h5>Custom Layout</h5>
-        <p:selectOneRadio id="customRadio" layout="custom">
-            <f:selectItem itemLabel="Red" itemValue="Red"/>
-            <f:selectItem itemLabel="Green" itemValue="Green"/>
-            <f:selectItem itemLabel="Blue" itemValue="Blue"/>
-        </p:selectOneRadio>
-        <span class="field-radiobutton" role="radio">
-            <p:radioButton id="facet2" for="customRadio" itemIndex="1"/>
-            <p:outputLabel for="facet2">
-                Green
-            </p:outputLabel>
-        </span>
-
-        <span class="field-radiobutton" role="radio">
-            <p:radioButton id="facet1" for="customRadio" itemIndex="0"/>
-            <p:outputLabel for="facet1">
-                Red
-            </p:outputLabel>
-        </span>
-
-        <span class="field-radiobutton" role="radio">
-            <p:radioButton id="facet3" for="customRadio" itemIndex="2"/>
-            <p:outputLabel for="facet3">
-                Blue
-            </p:outputLabel>
-        </span>
+        <p:calendar/>
     </h:form>
-
 </h:body>
 </html>
