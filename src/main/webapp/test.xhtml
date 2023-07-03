@@ -7,8 +7,35 @@
 <h:head>
 </h:head>
 <h:body>
-    <h:form id="frmTest">
-        <p:calendar/>
+    <h:form>
+        <p:growl id="message" showDetail="true">
+            <p:autoUpdate></p:autoUpdate>
+        </p:growl>
+        <p:dataTable rowKey="#{someBean}" value="#{testView.someBeans}" var="someBean">
+            <p:column style="width:2rem">
+                <p:rowToggler/>
+            </p:column>
+            <p:column>
+                #{someBean.someString}
+            </p:column>
+            <p:column>
+                <p:commandButton value="Confirm" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
+                    <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+            </p:column>
+
+            <p:rowExpansion>
+                <p:commandButton value="Confirm" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
+                    <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
+                </p:commandButton>
+            </p:rowExpansion>
+
+        </p:dataTable>
+
+        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
+            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
+            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
+        </p:confirmDialog>
     </h:form>
 </h:body>
 </html>
