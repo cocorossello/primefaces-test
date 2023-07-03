@@ -37,5 +37,14 @@
             <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
         </p:confirmDialog>
     </h:form>
+
+
+    <h2>issue with keyfilter and PF 13.0.0-RC2</h2>
+    <h:form>
+        <p:inputText required="true" styleClass="some-input">
+            <p:keyFilter preventPaste="false" testFunction="return !c.match(/[\d\u0300-\uFFFF]/);"/>
+        </p:inputText>
+
+    </h:form>
 </h:body>
 </html>
