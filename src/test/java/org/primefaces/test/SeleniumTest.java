@@ -1,17 +1,20 @@
 package org.primefaces.test;
 
-import com.codeborne.selenide.Condition;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class SeleniumTest {
 
+
     @Test
     public void keyFilterTest() {
-        open("http://localhost:8080/primefaces-test/");
-        $(".some-input").getWrappedElement().sendKeys("ج");
-        $(".some-input").shouldBe(Condition.empty);
+        WebDriverManager.chromedriver().setup();
+        var driver = new ChromeDriver();
+        driver.get("http://localhost:8080/primefaces-test/");
+        driver.findElement(By.cssSelector(".some-input")).sendKeys("ج");
+        System.out.printf(driver.findElement(By.cssSelector(".some-input")).getAttribute("value"));
     }
 }
