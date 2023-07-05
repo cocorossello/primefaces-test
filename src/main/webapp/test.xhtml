@@ -16,16 +16,16 @@
                 <p:rowToggler/>
             </p:column>
             <p:column>
-                #{someBean.someString}
+                Expand the row to test the command button in the row expansion
             </p:column>
             <p:column>
-                <p:commandButton value="Confirm" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
+                <p:commandButton value="This command button works" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
                     <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
             </p:column>
 
             <p:rowExpansion>
-                <p:commandButton value="Confirm" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
+                <p:commandButton value="This command button does not work" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
                     <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
                 </p:commandButton>
             </p:rowExpansion>
@@ -39,7 +39,7 @@
     </h:form>
 
 
-    <h2>issue with keyfilter and PF 13.0.0-RC2</h2>
+    <h2>issue with keyfilter and selenium</h2>
     <h:form>
         <p:inputText required="true" styleClass="some-input">
             <p:keyFilter preventPaste="false" testFunction="return !c.match(/[\d\u0300-\uFFFF]/);"/>
