@@ -1,49 +1,28 @@
-<!DOCTYPE html>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:o="http://omnifaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head></h:head>
+    <h:body>
+        <c:if test="true">
 
-<h:head>
-</h:head>
-<h:body>
-    <h:form>
-        <p:growl id="message" showDetail="true">
-            <p:autoUpdate></p:autoUpdate>
-        </p:growl>
-        <p:dataTable rowKey="#{someBean}" value="#{testView.someBeans}" var="someBean">
-            <p:column style="width:2rem">
-                <p:rowToggler/>
-            </p:column>
-            <p:column>
-                Expand the row to test the command button in the row expansion
-            </p:column>
-            <p:column>
-                <p:commandButton value="This command button works" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
-                    <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
-                </p:commandButton>
-            </p:column>
-
-            <p:rowExpansion>
-                <p:commandButton value="This command button does not work" action="#{testView.confirm}" styleClass="mr-2" icon="pi pi-check">
-                    <p:confirm header="Confirmation" message="Are you sure you want to proceed?" icon="pi pi-exclamation-triangle"/>
-                </p:commandButton>
-            </p:rowExpansion>
-
-        </p:dataTable>
-
-        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
-            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
-            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" />
-        </p:confirmDialog>
-    </h:form>
-
-
-    <h2>issue with keyfilter and selenium</h2>
-    <h:form>
-        <p:inputText required="true" styleClass="some-input">
-            <p:keyFilter preventPaste="false" testFunction="return !c.match(/[\d\u0300-\uFFFF]/);"/>
-        </p:inputText>
-    </h:form>
-</h:body>
+        </c:if>
+        <o:onloadScript>
+            console.log('hi');
+        </o:onloadScript>
+        <h:form>
+            <h1>
+                This example works in PF 13.0.7 but does not work in PF 13.0.8
+            </h1>
+            <p:autoComplete id="acSimple" value="#{autocompleteViewBean.value}"
+                            completeMethod="#{autocompleteViewBean.complete}" scrollHeight="250"/>
+        </h:form>
+    </h:body>
+</f:view>
 </html>
