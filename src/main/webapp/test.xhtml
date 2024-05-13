@@ -10,19 +10,8 @@
 <f:view>
     <h:head></h:head>
     <h:body>
-        <c:if test="true">
-
-        </c:if>
-        <o:onloadScript>
-            console.log('hi');
-        </o:onloadScript>
-        <h:form>
-            <h1>
-                This example works in PF 13.0.7 but does not work in PF 13.0.8
-            </h1>
-            <p:autoComplete id="acSimple" value="#{autocompleteViewBean.value}"
-                            completeMethod="#{autocompleteViewBean.complete}" scrollHeight="250"/>
-        </h:form>
+        <h1>Datepicker input is not writeable at the beginning since 14.0.0. It is writeable after a date select event </h1>
+        <p:datePicker/>
     </h:body>
 </f:view>
 </html>
