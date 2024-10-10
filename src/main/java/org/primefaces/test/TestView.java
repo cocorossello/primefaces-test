@@ -1,58 +1,28 @@
 package org.primefaces.test;
 
-import lombok.Data;
+import org.omnifaces.cdi.ViewScoped;
 
-import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Random;
 
-@Data
 @Named
 @ViewScoped
 public class TestView implements Serializable {
-    
-    private String string;
-    private Integer integer;
+
     private BigDecimal decimal;
-    private LocalDateTime localDateTime;
-    
-    @PostConstruct  
+
     public void init() {
-        string = "Welcome to PrimeFaces!!!";
-    }
-
-    public List<SomeBean> getSomeBeans() {
-        return List.of(new SomeBean("some string!"));
-    }
-
-    public void confirm() {
-        addMessage("Confirmed", "You have accepted");
+        decimal = new BigDecimal("123.45");
     }
 
 
-    public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
-
-    public class SomeBean {
-        private String someString;
-
-        public SomeBean() {
+    public String getWhatever() {
+        for (var i = 0; i < 999999; i++) {
+            new Random().nextInt(decimal.hashCode());
         }
-
-        public SomeBean(String someString) {
-            this.someString = someString;
-        }
-
-        public String getSomeString() {
-            return someString;
-        }
+        return decimal.toString();
     }
+
 }
