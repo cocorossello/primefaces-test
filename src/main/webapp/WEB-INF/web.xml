@@ -17,15 +17,15 @@
         <param-value>0</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>primefaces.THEME</param-name>
-        <param-value>saga</param-value>
-    </context-param>
-
     <!-- Enable PostConstruct on JSF ManagedBeans on Jetty -->
     <context-param>
         <param-name>org.apache.myfaces.config.annotation.LifecycleProvider</param-name>
         <param-value>org.apache.myfaces.config.annotation.NoInjectionAnnotationLifecycleProvider</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>org.apache.myfaces.NUMBER_OF_VIEWS_IN_SESSION</param-name>
+        <param-value>5</param-value>
     </context-param>
 
     <error-page>
@@ -105,6 +105,6 @@
     </mime-mapping>
 
     <welcome-file-list>
-        <welcome-file>test.xhtml</welcome-file>
+        <welcome-file>index.xhtml</welcome-file>
     </welcome-file-list>
 </web-app>

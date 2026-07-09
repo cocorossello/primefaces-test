@@ -1,28 +1,33 @@
 package org.primefaces.test;
 
+
 import org.omnifaces.cdi.ViewScoped;
+import org.omnifaces.util.Faces;
 
 import javax.inject.Named;
+import java.io.IOException;
 import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Random;
 
 @Named
 @ViewScoped
 public class TestView implements Serializable {
 
-    private BigDecimal decimal;
+    private String param;
 
-    public void init() {
-        decimal = new BigDecimal("123.45");
-    }
-
-
-    public String getWhatever() {
-        for (var i = 0; i < 999999; i++) {
-            new Random().nextInt(decimal.hashCode());
+    public String doSomething() throws IOException {
+        System.out.println("param: " + param + " jsessionid: " + Faces.getSessionId());
+        if (param == null) {
+            Faces.getResponse().sendError(500, "Error!");
+            Faces.responseComplete();
         }
-        return decimal.toString();
+        return param;
     }
 
+    public String getParam() {
+        return param;
+    }
+
+    public void setParam(String param) {
+        this.param = param;
+    }
 }
