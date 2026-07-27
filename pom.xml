@@ -49,7 +49,7 @@
         <dependency>
             <groupId>org.omnifaces</groupId>
             <artifactId>omnifaces</artifactId>
-            <version>3.14.4</version>
+            <version>3.14.22.TRAVLEC.2</version>
         </dependency>
         <dependency>
             <groupId>com.sun.xml.bind</groupId>
@@ -118,6 +118,12 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
             <version>4.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>13.0.28</version>
         </dependency>
 
         <dependency>
