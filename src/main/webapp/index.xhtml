@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:o="http://omnifaces.org/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
->
-<f:view>
-    <f:metadata>
-        <f:viewParam name="param" value="#{testView.param}" />
-    </f:metadata>
-    <h:body>
-        <o:form id="form1">
-            #{testView.doSomething()}
-        </o:form>
-    </h:body>
-</f:view>
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+    <title>MOVE_SCRIPTS_TO_BOTTOM: external script types</title>
+</h:head>
+<h:body>
+    <h1>MOVE_SCRIPTS_TO_BOTTOM: external script types</h1>
+    <p>Expected: all three results show PASS. No backing bean or external service is required.</p>
+    <p>With the bug, application/javascript and module remain FAIL because their rendered type has a tracking suffix.</p>
+    <ul>
+        <li>text/javascript (control): <strong id="control-result">FAIL</strong></li>
+        <li>application/javascript: <strong id="classic-result">FAIL</strong></li>
+        <li>module: <strong id="module-result">FAIL</strong></li>
+    </ul>
+    <p>Inspect the script elements in the browser: application/javascript_0 and module_1 are invalid executable script types.</p>
+    <p>The data URLs exercise the external-script (src) path while keeping the reproducer in one XHTML file.</p>
+
+    <script type="text/javascript"
+            src="data:text/javascript,document.getElementById('control-result').textContent='PASS';"></script>
+    <script type="application/javascript"
+            src="data:text/javascript,document.getElementById('classic-result').textContent='PASS';"></script>
+    <script type="module"
+            src="data:text/javascript,document.getElementById('module-result').textContent='PASS';"></script>
+</h:body>
 </html>
